@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 echo'<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 <link rel="stylesheet" href="style.css">';
 
@@ -29,20 +31,29 @@ echo '<table class="table table-danger">
       <th>Phone</th>
       <th>User Name</th>
       <th>Password</th>
-      <th>Department</th>
-      <th colspan="2">Options</th>
+      <th>image</th>
+      <th colspan="2" style="text-align:center; font-size:35px;">Options</th>
     </tr>   ';
 if($data){
     foreach($data as $val){
         $user    =  trim($val, "\n");
         $userdata=  explode(",",$user );
-        echo '<tr>'; 
         foreach($userdata as $value){
-            echo "<td>$value</td>";
+            if($value != $userdata[10]){
+                echo "<td>$value</td>";
+            }else{
+                echo "<td><img src='images/{$value}' style='width:50px; height:50px;'></td>";
+            }
+            
         }
-        echo "<td><a href='edit_form.php?id={$userdata[0]}' class='btn btn-dark'>Edit</a></td> 
-        <td><a href='delete.php?id={$userdata[0]}' class='btn btn-danger'>Delete</a></td>
-        </tr>'";
+        if(!isset($_SESSION['username']))
+        {    
+            echo '<td><a href="login_form.php" class="btn btn-success">Log In</a></td></tr>'; 
+        }else{
+            echo "<td><a href='edit_form.php?id={$userdata[0]}' class='btn btn-dark'>Edit</a></td> 
+            <td><a href='delete.php?id={$userdata[0]}' class='btn btn-danger'>Delete</a></td>
+            </tr>'";
+        }
     }
 }
 else{

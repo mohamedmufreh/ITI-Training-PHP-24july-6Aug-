@@ -5,35 +5,30 @@ echo '
 <link rel="stylesheet" href="style.css">';
 
 
+$alldata = $_GET['data'];
+$alldata = (array)json_decode($alldata);
+
+if(!empty($_GET["imgname"])){
+    $imgname = $_GET['imgname'];
+    $imgtmp  = $_GET['imgtmp'];
+}
+
 echo '<div class="container">';
-        echo " <h3>Saved In Your File</h3> <br>"; 
-        // echo"<pre>"; 
-        // var_dump($_POST); 
-        // echo "</pre>"; 
-        // die();
-     /*   if($_POST['gender']=='male')
-        {
-            echo "<h2> thanks to Mr {$_POST['first_name']} {$_POST['last_name']} </h2>";
-        }
-        else
-        {
-            echo "<h2> thanks to Miss {$_POST['first_name']} {$_POST['last_name']} </h2>";
-        }   */
-     //    echo "<br> {$skills} <br>";  die();
+
+if(isset($alldata['first_name'])){
        $id=time();
-       $skills=$_POST['skill'];
+       $skills=$alldata['skill'];
        $skills=implode("-" , $skills);
-       $userdata="{$id},{$_POST['first_name']} {$_POST['last_name']},{$_POST['email']},{$_POST['country']},{$_POST['address']},{$_POST['gender']},{$skills},{$_POST['phone']},{$_POST['username']},{$_POST['password']},{$_POST['department']}\n";
-    //    echo"<pre>"; 
-    //    var_dump($userdata); 
-    //    echo "</pre>"; 
-    //    die();
+       $userdata="{$id},{$alldata['first_name']} {$alldata['last_name']},{$alldata['email']},{$alldata['country']},{$alldata['address']},{$alldata['gender']},{$skills},{$alldata['phone']},{$alldata['username']},{$alldata['password']},{$imgname}\n";
+
         $data = fopen("users.txt","a");
         fwrite($data,$userdata);
         fclose($data); 
         
         header("location:view.php");
-
+}else{
+    header("location:view.php");
+}
 
 echo '</div>';
 

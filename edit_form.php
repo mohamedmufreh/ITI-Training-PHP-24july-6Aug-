@@ -148,18 +148,19 @@ $name[]=explode(" ",$users[1]);
         <label for="exampleInputPassword1" class="form-label">Password</label>
         <input value="<?php echo $users[9]; ?>" type="password" name="password" class="form-control" id="exampleInputPassword1">
     </div>
+   
     
-    <div class="mb-3">
+    <!-- <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Departments</label>
         <input value="<?php echo $users[10]; ?>" type="text" name="department" class="form-control" id="exampleInputPassword1" value="Open Source">
-    </div>
+    </div> -->
 
 
-    <div class="mb-3">
+    <!-- <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">3hY4u</label>
         <input type="text" name="Code" class="form-control" id="exampleInputPassword1" value="3hY4u">
         <p>Please Insert Code Above</p>
-    </div>
+    </div> -->
 
 
     <button type="submit" class="btn btn-primary">Submit</button>
