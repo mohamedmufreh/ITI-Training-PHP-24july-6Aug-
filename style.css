@@ -1,0 +1,21 @@
+.container{
+    padding: 50px;
+    margin-top: 100px;
+    background-color: rgb(90, 170, 236);
+    color: white;
+}
+
+#address{
+    width: 400px;
+    height: 200px;
+}
+
+label{
+    background-color: rgb(246, 89, 116);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.dropdown{
+    margin: 20px 0px;
+}
